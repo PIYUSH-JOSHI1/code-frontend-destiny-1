@@ -1,0 +1,1513 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Hello, Destiny — Six More Pages</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+  <style>
+    :root {
+      color-scheme: dark;
+      --desk: #171310;
+      --desk-2: #211c16;
+      --line: rgba(233, 222, 201, .14);
+      --desk-text: #dcd4c3;
+      --desk-muted: #9a9080;
+      --amber-bright: #d9a054;
+      --green: #8fbe92;
+      --paper: #f8f3e7;
+      --paper-2: #f1eada;
+      --ink: #372f23;
+      --ink-soft: #5c5344;
+      --amber: #a56e28;
+      --paper-edge: rgba(55, 45, 32, .16);
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      padding: 0 20px 64px;
+      background: var(--desk);
+      color: var(--desk-text);
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: #a56e28;
+      color: #f8f3e7
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", monospace
+    }
+
+    /* ---------- masthead ---------- */
+    .shell {
+      max-width: 1180px;
+      margin: 0 auto
+    }
+
+    .mast {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px 28px;
+      padding-block: 44px 20px;
+    }
+
+    .brand-code {
+      font-family: "JetBrains Mono", monospace;
+      font-size: clamp(17px, 2.6vw, 22px);
+      font-weight: 600;
+      color: var(--desk-text);
+      letter-spacing: .01em;
+    }
+
+    .brand-code .kw {
+      color: var(--amber-bright)
+    }
+
+    .brand-code .str {
+      color: var(--green)
+    }
+
+    .brand-sub {
+      display: block;
+      margin-top: 8px;
+      font-style: italic;
+      font-size: 15.5px;
+      color: var(--desk-muted);
+      max-width: 52ch;
+      line-height: 1.5;
+    }
+
+    .btn {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      border-radius: 4px;
+      cursor: pointer;
+      padding: 9px 14px;
+      transition: background .15s ease, color .15s ease, border-color .15s ease;
+    }
+
+    .btn-dark {
+      background: transparent;
+      color: var(--desk-text);
+      border: 1px solid rgba(233, 222, 201, .3);
+    }
+
+    .btn-dark:hover {
+      background: var(--paper);
+      border-color: var(--paper);
+      color: var(--ink)
+    }
+
+    .howto {
+      margin: 0 0 26px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+      font-size: 14.5px;
+      font-style: italic;
+      color: var(--desk-muted);
+      line-height: 1.6;
+      max-width: 78ch;
+    }
+
+    .howto b {
+      font-style: normal;
+      font-weight: 500;
+      color: var(--desk-text)
+    }
+
+    /* ---------- tabs ---------- */
+    .tabs {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      margin-inline: -20px;
+      padding-inline: 20px;
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      background: rgba(23, 19, 16, .94);
+      border-bottom: 1px solid var(--line);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .tabs::-webkit-scrollbar {
+      display: none
+    }
+
+    .tab {
+      flex: 0 0 auto;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11.5px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--desk-muted);
+      text-decoration: none;
+      padding: 13px 13px 11px;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+    }
+
+    .tab:hover {
+      color: var(--desk-text)
+    }
+
+    .tab.active {
+      color: var(--desk-text);
+      border-bottom-color: var(--amber-bright)
+    }
+
+    .tab .tno {
+      color: var(--amber-bright);
+      margin-right: 6px;
+      font-weight: 600
+    }
+
+    .tab.active .tno {
+      color: var(--amber-bright)
+    }
+
+    /* ---------- chapter head ---------- */
+    .chapter {
+      scroll-margin-top: 64px;
+      padding-top: 44px
+    }
+
+    .ch-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 14px 28px;
+      margin-bottom: 22px;
+    }
+
+    .ch-eyebrow {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      color: var(--amber-bright);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .ch-title {
+      margin: 0;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(26px, 3.6vw, 34px);
+      line-height: 1.15;
+      color: var(--paper);
+      text-wrap: balance;
+    }
+
+    .ch-meta {
+      display: block;
+      margin-top: 8px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11.5px;
+      color: var(--desk-muted);
+      letter-spacing: .04em;
+    }
+
+    .ch-head .btn-copy-ch {
+      flex: 0 0 auto
+    }
+
+    /* ---------- pages grid ---------- */
+    .pages {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      align-items: start
+    }
+
+    @media (min-width:900px) {
+      .pages {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    .page {
+      background: linear-gradient(180deg, var(--paper), var(--paper-2));
+      border: 1px solid var(--paper-edge);
+      border-radius: 6px;
+      padding: 24px 26px 16px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .32);
+      color: var(--ink);
+    }
+
+    .page-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .eyebrow {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 10.5px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: var(--amber);
+    }
+
+    .btn-paper {
+      background: transparent;
+      color: var(--ink-soft);
+      border: 1px solid rgba(55, 45, 32, .35);
+      font-size: 10px;
+      padding: 6px 10px;
+    }
+
+    .btn-paper:hover {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--paper)
+    }
+
+    .btn-paper.done {
+      background: #3e5c3a;
+      border-color: #3e5c3a;
+      color: #e9f2e4
+    }
+
+    .sec-title {
+      margin: 2px 0 14px;
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 600;
+      font-size: 14.5px;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      line-height: 1.7;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+
+    .page-body p {
+      margin: 0;
+      font-size: 16.5px;
+      line-height: 1.68;
+      color: var(--ink);
+      font-family: "Newsreader", Georgia, serif;
+    }
+
+    .page-body p+p {
+      margin-top: 13px
+    }
+
+    .page-body p:first-child::first-letter {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 600;
+      float: left;
+      font-size: 3.05em;
+      line-height: .86;
+      padding: 2px 9px 0 0;
+      color: var(--amber);
+    }
+
+    .folio {
+      margin-top: 18px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(55, 45, 32, .22);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      letter-spacing: .14em;
+      color: var(--amber);
+    }
+
+    .folio .sec-ref {
+      text-transform: uppercase;
+      letter-spacing: .16em
+    }
+
+    /* ---------- footer / toast ---------- */
+    .foot {
+      margin-top: 56px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      font-size: 14.5px;
+      font-style: italic;
+      color: var(--desk-muted);
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      transform: translate(-50%, 14px);
+      background: #242a20;
+      border: 1px solid #3e5c3a;
+      color: #cfe3c9;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      letter-spacing: .06em;
+      padding: 11px 18px;
+      border-radius: 6px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+      z-index: 50;
+      max-width: calc(100vw - 32px);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0)
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--amber-bright);
+      outline-offset: 2px
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      html {
+        scroll-behavior: auto
+      }
+
+      .btn,
+      .toast {
+        transition: none
+      }
+    }
+
+    @media (max-width:560px) {
+      .mast {
+        padding-block: 30px 14px
+      }
+
+      .page {
+        padding: 20px 20px 14px
+      }
+
+      .page-body p {
+        font-size: 16px
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="shell">
+
+    <header class="mast">
+      <div>
+        <span class="brand-code"><span class="kw">printf</span>(<span class="str">&ldquo;Hello,
+            Destiny&rdquo;</span>);</span>
+        <span class="brand-sub">Six new pages for every sub-chapter &mdash; Chapter Five expanded across 5.1 to 5.8,
+          written in the book&rsquo;s voice, ready to paste into Canva.</span>
+      </div>
+      <button class="btn btn-dark" id="copyAll">Copy all 48 pages</button>
+    </header>
+
+    <p class="howto">How to use: open a sub-chapter, press <b>Copy page</b>, and paste the text on a fresh page in
+      Canva. Each card is styled like a book page &mdash; chapter eyebrow, spaced section title, body, folio number.
+      This file extends Chapter 5 across sub-chapters 5.1&ndash;5.8, six pages each, numbered X.Y.Z (sub-chapter, then
+      page), and the folios run 106&ndash;153, landing right after the Chapter 4 extension pages; renumber inside Canva
+      if your draft differs.</p>
+    <nav class="tabs" id="tabs" aria-label="Chapter 5 sub-chapters">
+      <a class="tab" href="#ch51"><span class="tno">5.1</span>Badminton</a>
+      <a class="tab" href="#ch52"><span class="tno">5.2</span>Friends</a>
+      <a class="tab" href="#ch53"><span class="tno">5.3</span>Mornings</a>
+      <a class="tab" href="#ch54"><span class="tno">5.4</span>Fuel</a>
+      <a class="tab" href="#ch55"><span class="tno">5.5</span>Screens</a>
+      <a class="tab" href="#ch56"><span class="tno">5.6</span>Rest</a>
+      <a class="tab" href="#ch57"><span class="tno">5.7</span>Streaks</a>
+      <a class="tab" href="#ch58"><span class="tno">5.8</span>Promise</a>
+    </nav>
+
+
+    <main>
+
+      <!-- ==================== CHAPTER 5 · SUB-CHAPTER 5.1 ==================== -->
+      <section class="chapter" id="ch51" data-ch="5.1" data-title="Badminton Evenings" data-range="5.1.1&ndash;5.1.6"
+        data-pages="106&ndash;111">
+        <div class="ch-head">
+          <div>
+            <span class="ch-eyebrow">Chapter 5 &mdash; Healthy Habits, Healthier Mind &middot; Sub-chapter 5.1</span>
+            <h2 class="ch-title">The court behind the hostel</h2>
+            <span class="ch-meta">New pages 5.1.1&ndash;5.1.6 &middot; lands on book pages 106&ndash;111 &middot;
+              continues 5.1 Badminton Evenings</span>
+          </div>
+          <button class="btn btn-dark btn-copy-ch">Copy chapter &mdash; 6 pages</button>
+        </div>
+        <div class="pages">
+
+          <article class="page" data-sec="5.1.1">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.1.1 The Court Behind the Hostel</h3>
+            <div class="page-body">
+              <p>I did not choose badminton; the court was simply on the way to everything. It stood behind our hostel,
+                a concrete rectangle with faded lines, one net that sagged in the middle like a tired hammock, and
+                floodlights that worked on approximately seventy percent of the days you needed them. Nobody ever
+                announced its existence. You simply heard it every evening &mdash; the hollow knock of a shuttle on
+                wood, and laughter that carried up to the third-floor windows.</p>
+              <p>One evening my roommate gave me a choice with no options in it: come and watch, or sit alone in the
+                room. I went to watch. Within ten minutes a senior had thrown me a racket, and within ten more the
+                shuttle had been everywhere on that court except the place I aimed at. I apologised twice, called the
+                racket defective once, and was laughed at honestly and completely. That was my first match: me versus my
+                own grip, and I lost in straight games.</p>
+              <p>But something had already happened that evening that I did not have vocabulary for yet. For ninety
+                minutes my head had gone completely quiet &mdash; no submissions, no results, no future &mdash; only a
+                small white object arriving at speeds my whole attention had to meet. I walked back to the room sweating
+                and strangely light. I did not know it then, but I had just been introduced to the cheapest therapy a
+                student can buy.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.1.1</span><span>106</span></div>
+          </article>
+
+          <article class="page" data-sec="5.1.2">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.1.2 The Six O&rsquo;Clock Religion</h3>
+            <div class="page-body">
+              <p>The court ran on an unwritten constitution that no warden ever drafted. Games started at six, ended at
+                seven-thirty, and the winner stayed on while the loser&rsquo;s side rotated out &mdash; a system that
+                produced both fierce rallies and sudden, democratic retirements. Court booking happened by handshake,
+                disputes were settled by a replay, and the man who brought the shuttlecock held seniority no committee
+                could overrule.</p>
+              <p>What fascinated me most was the mixture of people the net collected. Toppers and backbenchers, seniors
+                and juniors, the gym regulars and the first-timers &mdash; all of them equal at exactly twenty-one
+                points. The court asked nobody their percentage and checked nobody&rsquo;s attendance. On that concrete,
+                a university topper and a backbencher were simply two people arguing about whether the shuttle had
+                touched the line, which, by ancient law, it had not.</p>
+              <p>Within a month, six o&rsquo;clock had become a religion I did not have to believe in &mdash; only
+                attend. That, I later understood, was the whole trick: a fixed slot does the work motivation cannot.
+                Motivation asks every evening whether you feel like playing. A slot does not ask. The court met at six,
+                and I either kept my appointment with it or I did not, and for once in my student life, I mostly did.
+              </p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.1.2</span><span>107</span></div>
+          </article>
+
+          <article class="page" data-sec="5.1.3">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.1.3 The Senior Who Fixed My Grip</h3>
+            <div class="page-body">
+              <p>I played badly for a long time and proudly blamed the racket, the lights, the wind inside a closed
+                hall. Then one evening the tallest senior in our hostel stopped the game mid-rally, walked over, and
+                rearranged my fingers on the grip like a man adjusting a camera he had owned for years. You are
+                arm-wrestling the shuttle, he said. The wrist gives it life; the arm only delivers it.</p>
+              <p>That ten-minute correction did what months of effort had failed to do. My smashes stopped apologising
+                on arrival, my clears finally cleared, and my wrist learnt a vocabulary my arm had been faking. He
+                watched me play one more game, nodded like a teacher signing an assignment, and went back to his own
+                match without another word. I practised that grip for the rest of the year like it was a formula I had
+                smuggled out of an exam hall.</p>
+              <p>That correction became one of the defining lessons of my education, and it had nothing to do with
+                badminton. A senior&rsquo;s ten minutes saved me a year of wrong practice &mdash; the exact exchange
+                rate I later found in code, where a mentor&rsquo;s one comment saved me days of confident wrongness. Ask
+                early, I decided that evening. Pride costs ten hours; a question costs ten minutes.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.1.3</span><span>108</span></div>
+          </article>
+
+          <article class="page" data-sec="5.1.4">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.1.4 Sweat Before Supper</h3>
+            <div class="page-body">
+              <p>The changes arrived quietly, the way good code refactors arrive &mdash; no announcements, just things
+                working better. My appetite, which had run on chaos, fixed its own schedule. Sleep stopped being a
+                negotiation and became a collapse of the pleasant kind. And mess food, the same mess food I had
+                criticised all first year, suddenly tasted earned. It turns out dinner after a real rally is a different
+                dish from dinner after a nap.</p>
+              <p>The strangest benefit was where it showed up in my work. The best ideas of that year did not arrive
+                while I scrolled; they arrived mid-rally, between points, in the gaps where the mind was too busy to
+                interrupt itself. I would walk off the court with a solution to a bug that had resisted two hours of
+                staring. Sweat, I discovered, is an excellent compiler for thoughts that refuse to build.</p>
+              <p>Years later, in a hackathon chapter I have already written, I called stamina a design decision. What I
+                did not mention there is where that belief was first compiled: on this court, in these evenings, one
+                exhausted rally at a time. The body, I learnt long before any judge confirmed it, is not a transport
+                arrangement for the brain. It is the machine the brain runs on &mdash; and machines that never move,
+                rust.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.1.4</span><span>109</span></div>
+          </article>
+
+          <article class="page" data-sec="5.1.5">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.1.5 The Inter-Department Tournament</h3>
+            <div class="page-body">
+              <p>Every February the college held its inter-department badminton tournament, and in my second year our
+                circle finally entered with more courage than credentials. My doubles partner was my roommate &mdash; a
+                boy whose serve had a mind of its own and whose smash was legally classified as a lob. We practised for
+                two weeks, designed one signal system of blinks and nods, and called our partnership strategy, which
+                flattered it considerably.</p>
+              <p>The draw gave us the mechanical department first, and nobody expected anything from us, which is the
+                most dangerous thing a team can be given. We played above ourselves, took the first game on pure noise
+                from the sideline, and eventually scraped through. The quarter-final, though, met the eventual
+                champions, and our fairytale ended the way most do &mdash; 21-19 in the third game, with my last smash
+                landing a centimetre wide and a whole department exhaling at once.</p>
+              <p>Here is the part I remember more than the score: we applauded the winners, and then we ate together.
+                That is what sport teaches that examinations never do &mdash; losing in front of people and shaking
+                their hands in the same hour. I had already begun collecting a syllabus of losing in hackathons; the
+                court had been teaching the same course all along, at a cheaper fee and with better exercise attached.
+              </p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.1.5</span><span>110</span></div>
+          </article>
+
+          <article class="page" data-sec="5.1.6">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.1.6 The Cheapest Therapy in Town</h3>
+            <div class="page-body">
+              <p>Every student discovers exam anxiety, and most discover it alone, staring at a ceiling at two in the
+                morning. I discovered a loophole. After any bad paper, I stopped brooding in the room and went to the
+                court instead, and ninety minutes later the same problem sat in my head, smaller, wearing its actual
+                size. Sweat turned out to be an excellent solvent for thoughts that will not dissolve otherwise.</p>
+              <p>The court was also the only place in college where nobody&rsquo;s history followed them. Not once in
+                three years did anyone ask my marks there. The topper&rsquo;s serve got returned the same way the
+                backbencher&rsquo;s did, and the net kept its opinions entirely sporting. For a student brain that spent
+                all day being measured, that concrete rectangle was a small country with no currency except the rally.
+              </p>
+              <p>So I will say it plainly, because nobody said it to me early enough: everyone needs a court. A place
+                where the mind&rsquo;s forty tabs close at once, where the body does the talking and the head is only
+                allowed to watch. It does not have to be badminton. It only has to be regular, physical and slightly out
+                of breath. The habit this whole chapter is built on began with one roommate dragging me outside &mdash;
+                and the friends he introduced me to there are the next pages of this chapter.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.1.6</span><span>111</span></div>
+          </article>
+
+        </div>
+      </section>
+      <!-- ==================== CHAPTER 5 · SUB-CHAPTER 5.2 ==================== -->
+      <section class="chapter" id="ch52" data-ch="5.2" data-title="The Friend Circle" data-range="5.2.1&ndash;5.2.6"
+        data-pages="112&ndash;117">
+        <div class="ch-head">
+          <div>
+            <span class="ch-eyebrow">Chapter 5 &mdash; Healthy Habits, Healthier Mind &middot; Sub-chapter 5.2</span>
+            <h2 class="ch-title">The people who refill you</h2>
+            <span class="ch-meta">New pages 5.2.1&ndash;5.2.6 &middot; lands on book pages 112&ndash;117 &middot;
+              continues 5.2 The Friend Circle</span>
+          </div>
+          <button class="btn btn-dark btn-copy-ch">Copy chapter &mdash; 6 pages</button>
+        </div>
+        <div class="pages">
+
+          <article class="page" data-sec="5.2.1">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.2.1 The Mess Table Parliament</h3>
+            <div class="page-body">
+              <p>Every friend circle has an address, and ours was the third table from the fan in the mess. Nobody
+                elected it, nobody minuted it, yet by the second month of college the parliament convened there at eight
+                o&rsquo;clock every night with the reliability of a government that actually works. Seats had owners.
+                The corner seat belonged to whoever arrived first, and the chair nearest the fan was defended with the
+                seriousness of a border dispute.</p>
+              <p>The parliament had its permanent members. There was the topper who explained the day&rsquo;s lecture
+                while eating, as if digestion and differentiation could share a brain. There was the food critic, who
+                reviewed every dal like a newspaper restaurant column. There was the quiet one who said little and
+                noticed everything, and there was the comedian, whose one job &mdash; executed with professional
+                consistency &mdash; was to make the table forget whatever paper had gone badly that day.</p>
+              <p>Years later, when people spoke about networking and communities, I always thought of that table first.
+                A friend circle is not an accident of proximity; it is a system. The mess table was where the day got
+                debugged out loud, where a bad test became a joke and a good day became a story. Before any habit of
+                this chapter made me healthier, that table already knew the first rule of a healthy mind: you cannot
+                carry a day alone.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.2.1</span><span>112</span></div>
+          </article>
+
+          <article class="page" data-sec="5.2.2">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.2.2 The Economics of Borrowing</h3>
+            <div class="page-body">
+              <p>Hostel friendship is measured in units the bank would not recognise: chargers, notes, an iron, one
+                plate of whatever arrived from somebody&rsquo;s home. The circle ran a parallel economy where the
+                currency was small favours, and the ledger &mdash; though nobody wrote it &mdash; balanced itself over
+                months with better accuracy than any accounting software I have used since.</p>
+              <p>Submission week showed the system at full load. One laptop circulated between four boys like a
+                government job; a hotspot was donated for a night and returned with gratitude; the boy with the printer
+                access became, for two days, the most visited man in the wing. Nobody kept formal score, and yet
+                everybody remembered. When my turn came to be the charger or the notes or the two a.m. proof-reader, I
+                paid without being asked twice.</p>
+              <p>That economy taught me what friendship actually deposits. It is not the grand gestures films advertise;
+                it is a hundred tiny transfers that compound quietly over years. Never keep the score loudly, but never
+                stop keeping it honestly &mdash; because the day you need a large withdrawal, it is the small deposits
+                that the whole circle remembers. The best banks I ever knew had mess-table branches.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.2.2</span><span>113</span></div>
+          </article>
+
+          <article class="page" data-sec="5.2.3">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.2.3 The Two O&rsquo;Clock Conversation</h3>
+            <div class="page-body">
+              <p>Deadline nights had a second shift that nobody scheduled: the two o&rsquo;clock conversation. When the
+                laptops finally closed and the corridor went quiet, four boys would drift to the stairs or the terrace,
+                and the talk would drift somewhere the day&rsquo;s jokes never reached. Placements. Family expectations.
+                The private fear that everyone else was somehow ahead. The hostel&rsquo;s official volume was noise; its
+                real business was conducted in these whispers.</p>
+              <p>One such night, a friend of ours &mdash; the funny one, the table&rsquo;s comedian &mdash; said quietly
+                that he sometimes felt invisible, that his marks were average and his jokes were the only thing anyone
+                noticed. Nobody offered solutions; at two in the morning, solutions are premature. We simply stayed, and
+                argued his case back to him, listing what we actually saw when we looked at him. By three, the boy who
+                made everyone laugh was laughing too, and it was not a performance.</p>
+              <p>I have never forgotten that night, because it taught me the cheapest mental-health technology ever
+                invented: a friend who stays. A problem spoken aloud loses weight; that is not philosophy, it is physics
+                of a kind. Every mind needs a two o&rsquo;clock friend, and every friend must occasionally be the two
+                o&rsquo;clock. Talking, we discovered, is maintenance &mdash; and maintenance, as I keep learning in
+                this chapter, is part of the work.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.2.3</span><span>114</span></div>
+          </article>
+
+          <article class="page" data-sec="5.2.4">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.2.4 The Friend Who Asked Twice</h3>
+            <div class="page-body">
+              <p>Among all the habits my friends taught me, the rarest was the art of checking in. Most people ask
+                &ldquo;are you okay?&rdquo; the way they ask for attendance &mdash; ritually, expecting the printed
+                reply. One friend in our circle had trained himself to ask it twice. The first &ldquo;are you
+                okay?&rdquo; collects the automatic fine. The second, asked an hour later with actual eyes, is the one
+                that collects the truth.</p>
+              <p>Result week tested everyone (my own result panic deserves its own chapter, and the book has given it
+                one). That week my answers were monosyllables and my chai went cold untouched, and this friend did not
+                lecture me about attitude. He simply appeared, said the mess was serving something non-vegetarian
+                &mdash; a sentence that has saved more students than any counselling cell &mdash; and sat with me until
+                I talked. The real answer arrived on the second asking. It always does.</p>
+              <p>Since then I try to be that friend for others, with mixed early results and improving technique. Asking
+                twice is a skill, and answering honestly is a bigger one. Between them stands the whole subject of this
+                chapter &mdash; a healthier mind is not built alone in a room; it is co-built, in small conversations,
+                by people who refuse to accept the first fine as the truth.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.2.4</span><span>115</span></div>
+          </article>
+
+          <article class="page" data-sec="5.2.5">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.2.5 The Circle That Edited Me</h3>
+            <div class="page-body">
+              <p>Friends, I eventually understood, are code reviewers for your character. They catch your bad habits in
+                review &mdash; the rising temper, the comfortable excuses, the small dishonesties nobody else is close
+                enough to notice &mdash; before those habits reach production and embarrass you in front of strangers. A
+                good circle does not clap at everything. A good circle comments on the pull request.</p>
+              <p>After our national hackathon win, when a newspaper clipping had begun to circulate and my sentences had
+                begun to grow adjectives, one friend delivered a review I still keep. He waited for the right moment,
+                then said: you were the same boy who could not find teammates in first year, so stay findable. One
+                sentence. My arrogance never fully recovered, which was the entire intention. A circle that only praises
+                is a linter with the rules switched off.</p>
+              <p>This is also how you choose a circle, if you are choosing. Audit it the way you audit dependencies:
+                keep the ones that make your builds better, remove the ones that only inflate the bundle. Some
+                friendships are loud cheerleaders and some are quiet compilers; the second kind hurts briefly and saves
+                you for years. My circle edited me for four years, and I have been grateful in every draft since.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.2.5</span><span>116</span></div>
+          </article>
+
+          <article class="page" data-sec="5.2.6">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.2.6 Scattered Cities, One Group Chat</h3>
+            <div class="page-body">
+              <p>Graduation did what graduations do: it took the mess table and distributed it across six cities and
+                three time zones. The parliament dissolved, and something smaller but stubborn survived in its place
+                &mdash; a group chat that has now outlived several phones. The seat nearest the fan has become whoever
+                replies first. The food critic still reviews restaurants by photograph. The comedian&rsquo;s jokes now
+                arrive one hour late from a different timezone, which somehow makes them funnier.</p>
+              <p>Distance tested the circle the way only distance can, and the results surprised me. The bonds I assumed
+                were built on proximity turned out to be built on attention: birthday calls that cross timezones, one
+                annual reunion where everybody pretends not to have aged, and the quiet rule that a message left unread
+                for a week is still answered, never buried. Rituals, I learnt, are the load-bearing walls of friendship.
+                Remove them and the roof sags, wherever everyone lives.</p>
+              <p>Friendship, it turns out, obeys the same law as every habit in this chapter: it survives on small,
+                regular deposits, and dies of large, long silences. A text, a call, a remembered detail &mdash; these
+                are the ink crosses of the group chat, one per day. The people who built me still refill me from six
+                cities away. That is the next habit&rsquo;s perfect introduction, because the mind this chapter protects
+                was never a solo project.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.2.6</span><span>117</span></div>
+          </article>
+
+        </div>
+      </section>
+      <!-- ==================== CHAPTER 5 · SUB-CHAPTER 5.3 ==================== -->
+      <section class="chapter" id="ch53" data-ch="5.3" data-title="Mornings That Decide the Day"
+        data-range="5.3.1&ndash;5.3.6" data-pages="118&ndash;123">
+        <div class="ch-head">
+          <div>
+            <span class="ch-eyebrow">Chapter 5 &mdash; Healthy Habits, Healthier Mind &middot; Sub-chapter 5.3</span>
+            <h2 class="ch-title">Whoever owns the morning</h2>
+            <span class="ch-meta">New pages 5.3.1&ndash;5.3.6 &middot; lands on book pages 118&ndash;123 &middot;
+              continues 5.3 Mornings That Decide the Day</span>
+          </div>
+          <button class="btn btn-dark btn-copy-ch">Copy chapter &mdash; 6 pages</button>
+        </div>
+        <div class="pages">
+
+          <article class="page" data-sec="5.3.1">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.3.1 The First Hour Rule</h3>
+            <div class="page-body">
+              <p>I discovered a quiet truth by accident, the way most discoveries actually happen: the first hour of the
+                morning decides the whole day. For one month I did a small experiment on myself, nothing scientific
+                &mdash; just a line in a diary every night about how the day had gone. When I read the lines together,
+                the pattern was embarrassing in its clarity. The day&rsquo;s character was almost always visible in its
+                opening hour.</p>
+              <p>If the phone won that hour, the day played defence &mdash; messages answered late, lectures attended in
+                spirit, every task arriving already overdue. If I won it &mdash; water, a few stretches, ten minutes of
+                silence &mdash; the day played on my terms, and even its accidents behaved like plot twists instead of
+                disasters. Same hostel, same syllabus, same boy; only the first hour was different.</p>
+              <p>There is no magic trick here, and I want to be honest about that. No five a.m. cult, no ice bath, no
+                quote on the wall. Just order, repeated until it stops feeling like effort and starts feeling like
+                character. The first hour is the smallest unit of the day and, therefore, the most powerful one. Whoever
+                owns it, owns the direction of everything that follows.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.3.1</span><span>118</span></div>
+          </article>
+
+          <article class="page" data-sec="5.3.2">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.3.2 The Alarm Across the Room</h3>
+            <div class="page-body">
+              <p>Waking early in a hostel sounds like a joke told by someone who has never lived in one. Doors slam on
+                different schedules, alarms cry in four different voices, and one friend snores in surround sound.
+                Willpower, I learnt quickly, has no chance in that acoustics. So I stopped trusting willpower and built
+                a small system instead &mdash; because systems, unlike intentions, survive the room they live in.</p>
+              <p>Rule one: the alarm lives across the room, so standing up is compulsory. For the first week this felt
+                like cruelty; my morning self developed entire legal arguments about why the bed needed me. My roommate
+                and I signed a silent treaty &mdash; if either alarm was silenced by the other, the sleeper owed one
+                samosa. The Cold War of the snooze button ended in a week, and the treaty still stands in my memory as
+                my first successful international agreement.</p>
+              <p>The lesson inside the comedy is one I use in every habit of this chapter: design beats willpower. Do
+                not try to become the kind of person who resists the snooze button; become the kind of person whose
+                alarm is across the room. Move the obstacle, not the intention. An engineer fixes a buggy system by
+                changing the environment, and a morning is just a system that needs its first fix.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.3.2</span><span>119</span></div>
+          </article>
+
+          <article class="page" data-sec="5.3.3">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.3.3 Water Before the Phone</h3>
+            <div class="page-body">
+              <p>Rule two of the system sounds too small to matter and matters the most: the water bottle sits on the
+                table before the phone does, and the first thing that enters my mouth each day is water, not
+                notifications. It began as a health tip from a fitness-obsessed senior and survived as something deeper
+                &mdash; a way of telling my own brain who this day belongs to.</p>
+              <p>Then the bigger rule: screens stay off for the first thirty minutes. No negotiations, no exceptions,
+                not even for the group chat&rsquo;s emergency, which in three years of monitoring has never once been an
+                actual emergency. Those thirty minutes are filled with the least impressive activities ever advertised
+                &mdash; stretching on a hostel floor, watching the courtyard light up, sitting with tea and no screen
+                while the world assembles itself.</p>
+              <p>Here is what the thirty minutes actually protect: the phone in the first hour is other people&rsquo;s
+                priorities wearing your alarm clock&rsquo;s uniform. Somebody else&rsquo;s deadline, somebody
+                else&rsquo;s opinion, somebody else&rsquo;s morning &mdash; all arriving before you have said one word
+                to yourself. The first hour is the only hour of the day that is truly yours by default. Give it to
+                strangers and you have sold the day before breakfast.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.3.3</span><span>120</span></div>
+          </article>
+
+          <article class="page" data-sec="5.3.4">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.3.4 The Hostel at Six</h3>
+            <div class="page-body">
+              <p>Nobody writes about the hostel at six in the morning, which is a shame, because it is a different
+                building. The corridor holds a silence that daytime never affords. The one early friend shuffles past
+                with his towel like a man carrying state secrets. From the window, the campus looks like a document
+                nobody has edited yet &mdash; clean, possible, entirely yours. Even the canteen&rsquo;s first chai,
+                poured at seven, tastes like it was brewed for a secret society.</p>
+              <p>The early risers of any hostel form an unspoken fraternity. We never founded a club; there were no
+                posters. But there was a nod exchanged in the corridor at six-fifteen, a quiet brotherhood of people who
+                had chosen the same strange hour. The gym-going senior, the girl from the next wing who read on the
+                steps, the watchman who seemed to know all our names by the first month. Mornings collected a small,
+                silent tribe.</p>
+              <p>What that tribe shared was not discipline in the heroic sense. It was simpler: we had discovered that
+                the day gives its best hours away for free before anyone starts demanding them. Mornings are the only
+                time the world has not yet filed its tickets against your attention. Once you have tasted a morning you
+                owned completely, eight-thirty starts to feel like arriving late to your own life.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.3.4</span><span>121</span></div>
+          </article>
+
+          <article class="page" data-sec="5.3.5">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.3.5 The Weeks the System Fell</h3>
+            <div class="page-body">
+              <p>Now the honest page, because habit books that show only victories are advertisements, not memoirs. The
+                morning system fell apart regularly. Exam weeks dismantled it. Hackathon nights &mdash; and my hackathon
+                chapters are a long confession about those &mdash; wrecked it deliberately, one three a.m. shift at a
+                time. When I flew back from Malaysia, my body clock filed for a formal separation and took a week to
+                negotiate its return.</p>
+              <p>What saved the habit was not discipline; it was a recovery protocol. The rule I learnt somewhere in
+                those collapsed weeks: never two broken mornings in a row. One bad morning is a data point; two in a row
+                is the beginning of a new and much worse habit. So after every collapse, I forgave fast, restarted small
+                &mdash; alarm across the room, water, nothing else &mdash; and let the system rebuild itself one morning
+                at a time.</p>
+              <p>That is when I finally understood what a system is. It is not fragile glass that shatters when dropped;
+                it is a habit that waits, patiently, for you to come back. The week you miss is not the system failing.
+                The system includes the comeback. Engineers call it fault tolerance, and a morning routine, like any
+                good service, should be judged not by its uptime alone but by how fast it recovers.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.3.5</span><span>122</span></div>
+          </article>
+
+          <article class="page" data-sec="5.3.6">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.3.6 The Steering Wheel</h3>
+            <div class="page-body">
+              <p>The results of those owned mornings arrived without drama, which is how the best results behave.
+                Lectures felt lighter when the day had already begun calmly. Errors in code looked smaller to a mind
+                that was not racing from minute one. Even the mess queue felt shorter on owned mornings, which is either
+                psychology or a genuine property of tea; I have never investigated, for fear of disproving it.</p>
+              <p>I am not a morning-motivation speaker &mdash; some of my proudest nights were sleepless ones, and this
+                book has already honoured several of them. The claim I make is smaller and more useful: between two
+                ordinary days, the morning is the steering wheel. On the days I held it first, the day went where I
+                steered. On the days the phone held it, I spent the whole journey arguing with the driver.</p>
+              <p>So that is the whole system, and it fits on a small card: alarm across the room, water before the
+                phone, thirty minutes that belong to nobody else, and a fast forgiveness protocol for the weeks it all
+                collapses. No magic. Order, repeated until it becomes character. Whoever holds the morning first chooses
+                the direction &mdash; and I would rather that somebody be me.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.3.6</span><span>123</span></div>
+          </article>
+
+        </div>
+      </section>
+      <!-- ==================== CHAPTER 5 · SUB-CHAPTER 5.4 ==================== -->
+      <section class="chapter" id="ch54" data-ch="5.4" data-title="Fuel for the Machine" data-range="5.4.1&ndash;5.4.6"
+        data-pages="124&ndash;129">
+        <div class="ch-head">
+          <div>
+            <span class="ch-eyebrow">Chapter 5 &mdash; Healthy Habits, Healthier Mind &middot; Sub-chapter 5.4</span>
+            <h2 class="ch-title">Garbage in, garbage out</h2>
+            <span class="ch-meta">New pages 5.4.1&ndash;5.4.6 &middot; lands on book pages 124&ndash;129 &middot;
+              continues 5.4 Fuel for the Machine</span>
+          </div>
+          <button class="btn btn-dark btn-copy-ch">Copy chapter &mdash; 6 pages</button>
+        </div>
+        <div class="pages">
+
+          <article class="page" data-sec="5.4.1">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.4.1 Whatever Is Available</h3>
+            <div class="page-body">
+              <p>We serviced our laptops with full sincerity in those years &mdash; updates, cleaning, careful charging,
+                a cover bought with pocket money. Meanwhile the machine that actually ran our lives got whatever
+                survived till midnight. In first year, my diet had a name, and the name was whatever is available. Extra
+                salt, extra sugar, zero timetable. If existence was the only criterion, the diet passed with
+                distinction.</p>
+              <p>An honest census of that year&rsquo;s nutrition would make a doctor laugh and a mother cry. Maggi in at
+                least two official flavours. Samosas at eleven at night, because the stall near the gate stayed honest
+                when nothing else did. Chai functioning as a food group, mood stabiliser and social calendar
+                simultaneously. And one family&rsquo;s homemade parcel, rationed like state supplies because it was the
+                only thing on the shelf with any retirement plan.</p>
+              <p>The strange part is that this diet worked &mdash; for a while. First-year bodies are forgiving
+                machines; they run on anything and still carry you up three floors. But the body sends its invoices
+                late, and with interest. The bill arrived in second year as headaches, dull evenings and a stamina graph
+                that only went one direction. That was when I began treating food less like fuel stops and more like
+                configuration files.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.4.1</span><span>124</span></div>
+          </article>
+
+          <article class="page" data-sec="5.4.2">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.4.2 Water Before Chai</h3>
+            <div class="page-body">
+              <p>The change began, as the best changes do, embarrassingly small: water before chai. One glass, before
+                the day&rsquo;s first cup. That is the entire rule, and I am almost ashamed to report how well it
+                worked. Hydration fixed half of what I had been diagnosing as tiredness, laziness or a bad attitude. My
+                body, it turned out, was not demanding a new life; it was politely asking for a drink.</p>
+              <p>The chai census came next, and the numbers were grim. Six cups a day was my first-year average &mdash;
+                one to wake, two to socialise, one to celebrate finishing work, one to mourn not starting, one because
+                the canteen was simply there. I cut it to two without going to war: water first, chai after breakfast,
+                chai at four. The first week produced withdrawal headaches I logged like a proper experiment. The second
+                week produced something suspiciously like clarity.</p>
+              <p>Substitution, I discovered, beats prohibition every time. I never banned anything; I only made
+                something better arrive first. Water before chai. Fruit before biscuits, when the canteen offered it. A
+                refill of the bottle before a refill of the cup. Habits do not need to be executed; most of them only
+                need to be outrun in the morning. The body takes its orders from whoever arrives first.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.4.2</span><span>125</span></div>
+          </article>
+
+          <article class="page" data-sec="5.4.3">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.4.3 The Stomach&rsquo;s Timetable</h3>
+            <div class="page-body">
+              <p>The next change sounds bureaucratic and worked like a miracle: I gave my stomach a timetable. One
+                proper meal at roughly the same time daily, instead of five random snacks wandering the evening like
+                unattended processes. The mess did half the work for me &mdash; its fixed timings were the first
+                schedule in my life that I did not have to design, only attend. I began treating dinner at eight as a
+                meeting I could not reschedule.</p>
+              <p>The results were absurdly quick. The body, it turns out, loves a schedule; within two weeks the hunger
+                arrived on time like a well-maintained service, instead of ambushing me at midnight. Skipping breakfast
+                &mdash; my old speciality, performed with pride &mdash; turned out to be a loan I was taking against my
+                own afternoon, repaid with slowness and irritability. Regular meals were not a wellness theory; they
+                were, quite literally, garbage collection running on schedule.</p>
+              <p>Of all people, engineers should appreciate this. We build systems that run best with predictable inputs
+                and regular maintenance windows, and then we feed the human running them at random hours from a vending
+                machine. The stomach is not asking for a diet chart; it is asking for a cron job. Feed it like a process
+                you depend on, because you depend on it more than any code you will ever ship.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.4.3</span><span>126</span></div>
+          </article>
+
+          <article class="page" data-sec="5.4.4">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.4.4 The Headache That Resigned</h3>
+            <div class="page-body">
+              <p>The first resignation letter I ever received came from a headache. For years, every long coding session
+                ended the same way &mdash; a dull pressure behind the eyes at eleven, dismissed as the price of
+                ambition. Then, some weeks into water, timings and actual meals, I noticed the pressure had stopped
+                reporting for duty. Long sessions still ended, but in tiredness &mdash; the honest kind &mdash; instead
+                of pain.</p>
+              <p>The other payoffs arrived quietly too. Evening games felt lighter, now that the body had fuel that
+                burned steadily instead of spiking and crashing. My mood steadied like a server that has finally been
+                given enough memory &mdash; I wrote that line in my diary that month, and I stand by it, because the
+                machine was the same machine; only its resources had stopped being starved. Even focus stretched:
+                two-hour sessions that used to feel like marathons began to feel like warm-ups.</p>
+              <p>That is when the connection became impossible to unsee. Focus, mood and stamina are not personality
+                traits; they are downstream of the plate. The brain is a very expensive tenant and the stomach is its
+                landlord, and you cannot stiff the landlord and expect the tenant to perform. Food is configuration for
+                the mind. Change the configuration, and the same code runs differently.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.4.4</span><span>127</span></div>
+          </article>
+
+          <article class="page" data-sec="5.4.5">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.4.5 Birthday Cakes and Cheat Weeks</h3>
+            <div class="page-body">
+              <p>Now the page the diet books never write honestly: my eating system survived because it allowed
+                festivals. Every birthday in the wing meant cake at midnight. Every festival meant somebody&rsquo;s
+                mother had sent something fried and sacred. Every exam result, every hackathon win, every small
+                happiness in hostel life arrived attached to food, and I refused to be the monk who photographed his
+                plate while his friends celebrated.</p>
+              <p>So the rule was built to bend: enjoy fully, and return by the next meal. One day of feast never ruined
+                anything; one week of treating a festival as a lifestyle did. The trick was planning the exceptions
+                instead of being ambushed by them. A birthday is not a failure of discipline &mdash; it is the schedule
+                working. The guilt, not the cake, was the only genuinely harmful ingredient in the whole arrangement.
+              </p>
+              <p>This is the page where I lose the audience that wanted perfection, and I accept that trade. Hostels are
+                not wellness retreats, and college is not a retreat of any kind. A perfect diet is impossible there; a
+                better one is always one small choice away &mdash; less fried, more water, regular timings, and full
+                permission to enjoy the party. Moderation is not the enemy of joy. Guilt is. Plan the exceptions, or
+                they will plan you.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.4.5</span><span>128</span></div>
+          </article>
+
+          <article class="page" data-sec="5.4.6">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.4.6 Garbage In, Garbage Out</h3>
+            <div class="page-body">
+              <p>Every programmer learns one law in the first month and spends the rest of the career watching it come
+                true: garbage in, garbage out. Feed a system bad input and no amount of clever processing will save the
+                output. What nobody told us was that the law does not stop at the computer. The body runs the exact same
+                law, with longer compile times and a much stricter code review.</p>
+              <p>The laptop comparison followed me for years because it was too accurate to ignore. We updated our
+                machines, cleaned their fans, replaced their batteries with ceremony. The machine that runs the eyes
+                reading this page and the hands that wrote this book got whatever survived till midnight. We were, as a
+                generation, servicing our laptops with more sincerity than our bodies &mdash; and then wondering why the
+                humans kept lagging.</p>
+              <p>So this sub-chapter closes with the only nutrition advice I am qualified to give, and it is a
+                programmer&rsquo;s advice: feed the body like something you are building for the long term, because that
+                is precisely what it is. There are no rewrites available for this system &mdash; no factory reset, no
+                migration to a newer model. Only small commits, made daily, compounding in one direction or the other.
+                Garbage in, garbage out. Water in, everything out.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.4.6</span><span>129</span></div>
+          </article>
+
+        </div>
+      </section>
+      <!-- ==================== CHAPTER 5 · SUB-CHAPTER 5.5 ==================== -->
+      <section class="chapter" id="ch55" data-ch="5.5" data-title="The Screen Break" data-range="5.5.1&ndash;5.5.6"
+        data-pages="130&ndash;135">
+        <div class="ch-head">
+          <div>
+            <span class="ch-eyebrow">Chapter 5 &mdash; Healthy Habits, Healthier Mind &middot; Sub-chapter 5.5</span>
+            <h2 class="ch-title">The gaps where thinking lives</h2>
+            <span class="ch-meta">New pages 5.5.1&ndash;5.5.6 &middot; lands on book pages 130&ndash;135 &middot;
+              continues 5.5 The Screen Break</span>
+          </div>
+          <button class="btn btn-dark btn-copy-ch">Copy chapter &mdash; 6 pages</button>
+        </div>
+        <div class="pages">
+
+          <article class="page" data-sec="5.5.1">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.5.1 The Report That Embarrassed Me</h3>
+            <div class="page-body">
+              <p>Here is an ironic confession from a programmer: the habit that saved my focus was spending less time on
+                screens. In second year, scrolling through my phone&rsquo;s settings one bored evening, I opened the
+                screen-time report &mdash; the app built to show you exactly what you refuse to see. It presented my
+                month in a neat bar chart, the way only software can present evidence of a crime.</p>
+              <p>I did some honest maths on that report. My daily average, collected across a month, totalled hours that
+                could have built a complete project &mdash; with documentation, and time left over for a demo. The top
+                three apps were not tools of my ambition; they were spectators of it. That was the sentence I wrote in
+                my diary that night, and it has stayed accurate ever since: I was not using the phone. The phone was
+                scheduling me.</p>
+              <p>The embarrassment lasted exactly as long as it takes to turn embarrassment into a plan. You cannot fix
+                what you do not measure &mdash; the oldest law of engineering, and the oldest law of habits too. That
+                report was the debugger for my attention: it did not judge me, it simply showed me the call stack of my
+                evenings. Every fix I will describe in the next pages started from that one uncomfortable screenshot.
+              </p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.5.1</span><span>130</span></div>
+          </article>
+
+          <article class="page" data-sec="5.5.2">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.5.2 The One-Week Experiment</h3>
+            <div class="page-body">
+              <p>I treated the fix like an engineer treats any vague problem: as a one-week experiment with a clear
+                design. Three variables, no more. Notifications off for everything except calls. The phone sleeps
+                outside the study table, in a drawer that became famous in our room as the phone&rsquo;s hostel. And one
+                full screen-free hour daily &mdash; walking, stretching, or simply staring at the ceiling like a
+                philosopher on a budget.</p>
+              <p>Then I made the mistake that made the experiment work: I announced it. My circle heard the plan and
+                reacted with the warmth of a court hearing an appeal &mdash; you will not last two days, said one,
+                quoting history as evidence. The bet was informal, but the audience was real. Group accountability, I
+                have found, is cheaper than discipline and twice as effective, and my circle has never once let me
+                forget a public promise.</p>
+              <p>Habit change, I have decided, should always be run this way &mdash; small, measured, reversible, and
+                slightly public. A week is too short to be terrifying and long enough to produce data. Announcing it
+                converts stubbornness into support. And framing it as an experiment removes the moral weight: I was not
+                failing as a human; I was simply running version one and collecting feedback for version two.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.5.2</span><span>131</span></div>
+          </article>
+
+          <article class="page" data-sec="5.5.3">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.5.3 Withdrawal Symptoms</h3>
+            <div class="page-body">
+              <p>Day one was humiliating. My hands kept reaching for a phone that was not on the table &mdash; the reach
+                itself was automatic, the discovery of nothing there was a small grief, repeated dozens of times before
+                lunch. I felt phantom vibrations in a pocket that had held nothing for hours. The first two days felt
+                like my hands were missing an organ, and I logged each reach like a scientist logging symptoms.</p>
+              <p>The reflex reaches were the data that embarrassed me most. I counted them the second day: more than
+                forty deliberate reaches toward a device that was locked in a drawer. Forty times a day, my hand
+                proposed a task to my brain before my brain had requested one. The habit was not that I loved my phone.
+                The habit was that my hand had been trained to check, and checking had become the body&rsquo;s default
+                state.</p>
+              <p>The discomfort, I realised by day two, was information &mdash; the exact measurement of how deep the
+                habit had run. Nobody enjoys withdrawal symptoms, but they do prove the dependency honestly. I wrote the
+                count on the wall next to my other experiments, and looking at that number did more persuading than any
+                lecture on digital wellness ever could. Data, again, beat discipline.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.5.3</span><span>132</span></div>
+          </article>
+
+          <article class="page" data-sec="5.5.4">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.5.4 The Return of Boredom</h3>
+            <div class="page-body">
+              <p>Day four delivered the guest I had not invited: boredom. Genuine, unfilled, old-fashioned boredom
+                &mdash; the kind my childhood used to be made of. And behind boredom, quietly, ideas started lining up.
+                A project I had postponed for months presented itself with a plan attached. An old bug&rsquo;s solution
+                surfaced while I watched the ceiling. A letter I owed someone wrote itself in my head, almost
+                completely.</p>
+              <p>The mechanism, once seen, could not be unseen. The scroll was eating the empty gaps &mdash; the queue,
+                the lift, the walk, the minutes between things &mdash; and those gaps were not dead time. They were
+                where thinking used to live. Every queue, every walk, every ceiling I had ever stared at had been
+                silently processing the day. The scroll was not stealing my free time. It was stealing my processing
+                time.</p>
+              <p>By day four the experiment had stopped being about screens at all. It was about what returns when the
+                noise stops: boredom, and behind boredom, ideas, patient as a queue that never complains. I understood
+                then why my best ideas had always arrived in showers and bus rides and badminton rallies. Not because
+                those moments were special, but because they were the last uncolonised gaps.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.5.4</span><span>133</span></div>
+          </article>
+
+          <article class="page" data-sec="5.5.5">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.5.5 The Rules That Survived</h3>
+            <div class="page-body">
+              <p>Experiments, like products, must survive contact with reality, so let me report honestly what lived and
+                what died. What survived: notifications by whitelist only, the phone sleeping outside the bedroom, and
+                the one screen-free hour, which quietly became permanent. What died with honour: my grand ambition of a
+                full digital detox weekend, which collapsed at noon on day one and taught me more than the victories did
+                &mdash; ambition is a poor architect for habits; design is better.</p>
+              <p>The balance that finally worked surprised me with its simplicity. Screens were never the enemy &mdash;
+                code is my favourite screen, and this entire career would be impossible without them. The enemy was the
+                endless scroll: the feed designed to have no bottom, consuming exactly the minutes my mind used for its
+                own housekeeping. The difference between a tool and a trap, I learnt, is whether you decide when it
+                ends.</p>
+              <p>So I designed my screen life the way I would design any interface: fewer interruptions, clear exits, no
+                infinite feeds in the default view. The phone that remains is more useful than the one I had before
+                &mdash; it works for me the way tools should, and waits politely when I am busy thinking. An
+                engineer&rsquo;s habits, in the end, are just user interfaces for the self. Build yours deliberately, or
+                somebody else&rsquo;s feed will.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.5.5</span><span>134</span></div>
+          </article>
+
+          <article class="page" data-sec="5.5.6">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.5.6 Using, Not Being Used</h3>
+            <div class="page-body">
+              <p>The one-week experiment taught me the difference I had been missing all along: the difference between
+                using a device and being used by one. The test is simple and brutal &mdash; when you pick it up, did you
+                decide, or did it? A tool answers to its user. A scheduler does not ask. For years my phone had been the
+                latter, wearing the costume of the former.</p>
+              <p>The long-term changes arrived in places I had stopped measuring. Reading came back &mdash; actual
+                books, with pages that do not refresh. Conversations with friends lengthened, because a pocket full of
+                strangers had stopped interrupting the two people actually sitting there. Walks became interesting
+                again, and not because the route changed; because nothing was competing with it. The world, it turns
+                out, had been in high resolution the whole time.</p>
+              <p>Screens are not the enemy &mdash; I want to say that once more before this sub-chapter closes, because
+                I love my screens. The enemy is the endless scroll that eats the empty gaps where thinking used to live.
+                Guard those gaps fiercely, the way you would guard any production resource. Silence is not wasted time.
+                It is where the next idea waits, patiently, behind all the noise.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.5.6</span><span>135</span></div>
+          </article>
+
+        </div>
+      </section>
+      <!-- ==================== CHAPTER 5 · SUB-CHAPTER 5.6 ==================== -->
+      <section class="chapter" id="ch56" data-ch="5.6" data-title="Learning to Rest" data-range="5.6.1&ndash;5.6.6"
+        data-pages="136&ndash;141">
+        <div class="ch-head">
+          <div>
+            <span class="ch-eyebrow">Chapter 5 &mdash; Healthy Habits, Healthier Mind &middot; Sub-chapter 5.6</span>
+            <h2 class="ch-title">Rest is maintenance</h2>
+            <span class="ch-meta">New pages 5.6.1&ndash;5.6.6 &middot; lands on book pages 136&ndash;141 &middot;
+              continues 5.6 Learning to Rest</span>
+          </div>
+          <button class="btn btn-dark btn-copy-ch">Copy chapter &mdash; 6 pages</button>
+        </div>
+        <div class="pages">
+
+          <article class="page" data-sec="5.6.1">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.6.1 The Burnout That Whispered</h3>
+            <div class="page-body">
+              <p>My first burnout never announced itself. There was no dramatic collapse, no week in bed, nothing worth
+                a scene in a film. It simply made everything slower, flatter and heavier &mdash; sessions that once flew
+                now dragged, small tasks felt like furniture to be moved, and weekends stopped refilling anything. I
+                blamed the syllabus, the weather, the mess, the moon. Everything except the actual cause, which was that
+                I had not rested in months.</p>
+              <p>In engineer&rsquo;s terms, the symptoms were familiar from a machine I would have diagnosed instantly.
+                Compile times grew longer for the same code. Motivation began throwing random segfaults. Small tasks,
+                which had always run in the background, started blocking the main thread. Joy&rsquo;s build failed
+                silently on every branch. If a server behaved this way, I would have checked its resource usage before
+                touching a single line of logic.</p>
+              <p>Instead I pushed harder, because that is what we are trained to do. Here is the truth I want this page
+                to carry: burnout does not begin with a crash; it begins with a whisper. Flatter days. Slower mornings.
+                Work that still gets done but costs triple. Learn the whisper &mdash; it is the cheapest consultation
+                you will ever get, and the only one that arrives before the bill does.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.6.1</span><span>136</span></div>
+          </article>
+
+          <article class="page" data-sec="5.6.2">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.6.2 Escaping Is Not Resting</h3>
+            <div class="page-body">
+              <p>Recovery taught me the distinction my generation most needs: the difference between escaping and
+                resting. I had been resting, I believed, for hours every day &mdash; three hours of scrolling after
+                work, videos until the screen blurred. But three hours of scrolling is not rest; it is simply a
+                different screen. Escape changes the channel. Rest changes the state. I had been changing channels with
+                a dead battery.</p>
+              <p>Real rest, when I finally tried some, turned out to be embarrassingly plain. Sleeping at a fixed time
+                &mdash; the same hour, honestly kept. One guilt-free off day a week. Doing nothing without apologising
+                for it, which proved harder than all the deadlines of the year combined. A walk without a destination, a
+                meal without a screen, an evening that produced nothing and was therefore successful.</p>
+              <p>The hardest ingredient, by far, was the guilt. An engineering brain whispers that rest is a loss
+                &mdash; an hour with no output is a defect, a leak, a waste. It took me embarrassingly long to see the
+                flaw in that model: the body is not a machine that runs on output alone. It is a machine that also
+                requires maintenance, and maintenance, as every engineer knows, is part of the work &mdash; not a tax on
+                it.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.6.2</span><span>137</span></div>
+          </article>
+
+          <article class="page" data-sec="5.6.3">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.6.3 Sleep Like a Deadline</h3>
+            <div class="page-body">
+              <p>These days I treat sleep like a deadline &mdash; fixed, respected, non-negotiable. The comparison makes
+                my friends laugh, but it is the only framework my brain has ever obeyed without rebellion. A deadline
+                does not negotiate, does not accept excuses, and does not extend itself because the work was
+                interesting. Sleep, discovered late and kept since, works exactly the same way.</p>
+              <p>The mathematics I discovered still surprises people: seven hours of rested work regularly beats twelve
+                hours of tired work. I have the receipts, from hackathons. The national finale taught it first &mdash;
+                our shift system, two sleeping while two built, out-produced teams that glorified exhaustion (I wrote it
+                then as stamina being a design decision, and I have never updated that line). Sleep debt, I have since
+                understood, compounds exactly like technical debt: invisible on day one, catastrophic on day twenty.</p>
+              <p>There is no heroism in exhaustion; there is only postponed payment. The body will take its rest either
+                way &mdash; the only choice you have is whether the stop is scheduled or unscheduled. Every system has a
+                maintenance window. Yours is either the seven hours you planned, or the two days you did not. Sleep is
+                not the reward for finishing the work. It is the infrastructure the work runs on.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.6.3</span><span>138</span></div>
+          </article>
+
+          <article class="page" data-sec="5.6.4">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.6.4 The Off-Day Protocol</h3>
+            <div class="page-body">
+              <p>The guilt-free off day was the hardest rule to install and the easiest to defend once running. One day
+                a week, fully off &mdash; the court in the evening, a long lunch with the circle, an afternoon nap that
+                apologised to nobody, and not one line of productivity, planned or accidental. The first two off-days
+                felt like crimes in progress. By the fourth, they had become the week&rsquo;s load-bearing beam.</p>
+              <p>What surprised me was the economics. Output did not drop; it sharpened. Monday arrived carrying ideas
+                that Sunday&rsquo;s rest had apparently loaded overnight &mdash; the messy problems unsolved on Friday
+                dissolved by Monday noon, without anyone touching them in between. The off day was not a pause in the
+                work. It was a stage of the work, the way compilation is a stage of building: nothing visible happens,
+                and nothing could happen without it.</p>
+              <p>So the protocol stands, and I recommend it with full confidence: one off day a week, protected like a
+                production deploy. What it must contain &mdash; rest that refills, people who refill, at least one meal
+                that behaves like a festival. What it must not contain &mdash; guilt, and the word just in the sentence
+                I am just resting. There is no just. Rest is not the opposite of productivity. It is the fuel station
+                productivity keeps visiting, whether you schedule the stop or not.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.6.4</span><span>139</span></div>
+          </article>
+
+          <article class="page" data-sec="5.6.5">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.6.5 Rest for the Mind</h3>
+            <div class="page-body">
+              <p>The body&rsquo;s rest was only half the syllabus; the mind needed its own, and it took me longer to
+                learn. Mental rest has its own small catalogue, and none of it is impressive to watch: a walk without
+                headphones, a meal without a screen, an evening with friends where nobody discusses work. Each of these
+                is defragmentation for a machine nobody can see but everybody can hear when it is noisy.</p>
+              <p>Our circle invented its own restart buttons without ever calling them that. The evening court was
+                defragmentation &mdash; forty minutes in which the mind&rsquo;s open tabs closed themselves. The mess
+                table at eight was cache clearing: the day got spoken through once, and then it stopped replaying. The
+                two o&rsquo;clock conversations were full restarts. None of this was labelled mental health. All of it
+                was.</p>
+              <p>What I protect now is the mind&rsquo;s idle time, and I defend it with the same seriousness as study
+                hours, because idle is not idle. The idle mind is the only state in which it edits, connects and files
+                the day&rsquo;s work. A mind never rested does not think harder; it just thinks in loops. Every machine
+                we build has an idle state, and we designed it in deliberately. Give your own machine the same courtesy.
+              </p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.6.5</span><span>140</span></div>
+          </article>
+
+          <article class="page" data-sec="5.6.6">
+            <div class="page-top"><span class="eyebrow">Chapter 5 &middot; Healthy Habits, Healthier Mind</span><button
+                class="btn btn-paper page-copy">Copy page</button></div>
+            <h3 class="sec-title">5.6.6 Maintenance Is Part of the Work</h3>
+            <div class="page-body">
+              <p>The reframe that finally stuck, years after the first burnout: maintenance is part of the work, not a
+                tax on it. No team runs a production server twenty-four-seven without maintenance windows and then acts
+                shocked at the crash &mdash; we would call that negligence. Yet we run ourselves on exactly that
+                schedule and call the crash a personal failure. The double standard is so old that we mistake it for
+                maturity.</p>
+              <p>So the arithmetic I keep repeating, because it is the entire subject in one sentence: seven hours of
+                rested work, regularly, beats twelve hours of tired work, occasionally. Rest is not the opposite of
+                productivity. It is the fuel station that productivity keeps visiting &mdash; whether you schedule the
+                stop or not. The choice is never between resting and working. It is between a planned stop and an
+                emergency one.</p>
+              <p>For years I treated rest like a salary &mdash; finish the work, then earn the break. The flaw in that
+                deal is simple: the work never finishes, so the break never arrives, and the body collects the payment
+                later with interest. I have since renegotiated the contract. Rest now comes first, scheduled like the
+                deadline it quietly is, and the work &mdash; I can report from both sides of the deal &mdash; has never
+                been better.</p>
+            </div>
+            <div class="folio"><span class="sec-ref">5.6.6</span><span>141</span></div>
+          </article>
+
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      The book still ends with &ldquo;To Be Continued . . . .&rdquo; &mdash; these forty-eight pages slot in before
+      it.<br>
+      Written to match the original voice: simple English, no emojis, a little Hinglish where it belongs.
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+      (function () {
+        "use strict";
+        var toast = document.getElementById("toast");
+        var toastTimer = null;
+        function showToast(msg) {
+          toast.textContent = msg;
+          toast.classList.add("show");
+          clearTimeout(toastTimer);
+          toastTimer = setTimeout(function () { toast.classList.remove("show"); }, 2000);
+        }
+        function flash(btn) {
+          var old = btn.textContent;
+          btn.textContent = "Copied";
+          btn.classList.add("done");
+          setTimeout(function () {
+            btn.textContent = old;
+            btn.classList.remove("done");
+          }, 1400);
+        }
+        function copyText(text, cb) {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function () { cb(true); }, function () { cb(fallback(text)); });
+          } else {
+            cb(fallback(text));
+          }
+        }
+        function fallback(text) {
+          try {
+            var ta = document.createElement("textarea");
+            ta.value = text;
+            ta.style.position = "fixed"; ta.style.opacity = "0";
+            document.body.appendChild(ta);
+            ta.select();
+            var ok = document.execCommand("copy");
+            document.body.removeChild(ta);
+            return ok;
+          } catch (e) { return false; }
+        }
+        function pageText(card) {
+          var t = card.querySelector(".sec-title").textContent.replace(/\s+/g, " ").trim();
+          var ps = Array.prototype.map.call(card.querySelectorAll(".page-body p"), function (p) {
+            return p.textContent.replace(/\s+/g, " ").trim();
+          });
+          return t + "\n\n" + ps.join("\n\n");
+        }
+        function chapterText(sec) {
+          var head = "Chapter " + sec.dataset.ch + " — " + sec.dataset.title +
+            "\nExtension pages " + sec.dataset.range.replace(/ /g, " ") + " (book pages " + sec.dataset.pages + ")";
+          var body = Array.prototype.map.call(sec.querySelectorAll(".page"), pageText)
+            .join("\n\n" + new Array(46).join("-") + "\n\n");
+          return head + "\n\n" + body;
+        }
+        document.querySelectorAll(".page-copy").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var card = btn.closest(".page");
+            copyText(pageText(card), function (ok) {
+              if (ok) { showToast("Page " + card.dataset.sec + " copied"); flash(btn); }
+              else { showToast("Copy failed — select the text manually"); }
+            });
+          });
+        });
+        document.querySelectorAll(".btn-copy-ch").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var sec = btn.closest(".chapter");
+            copyText(chapterText(sec), function (ok) {
+              if (ok) { showToast("Chapter " + sec.dataset.ch + " copied — 6 pages"); flash(btn); }
+              else { showToast("Copy failed — select the text manually"); }
+            });
+          });
+        });
+        document.getElementById("copyAll").addEventListener("click", function () {
+          var secs = document.querySelectorAll(".chapter");
+          var all = Array.prototype.map.call(secs, chapterText)
+            .join("\n\n" + new Array(60).join("=") + "\n\n");
+          var btn = this;
+          copyText("printf(\"Hello, Destiny\") — extension pages\n\n" + all, function (ok) {
+            if (ok) { showToast("All 48 pages copied"); flash(btn); }
+            else { showToast("Copy failed — select the text manually"); }
+          });
+        });
+
+        // tabs scrollspy
+        var tabs = document.querySelectorAll(".tab");
+        function setActive(id) {
+          tabs.forEach(function (t) {
+            t.classList.toggle("active", t.getAttribute("href") === "#" + id);
+          });
+        }
+        if ("IntersectionObserver" in window) {
+          var spy = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) setActive(e.target.id);
+            });
+          }, { rootMargin: "-35% 0px -55% 0px", threshold: 0 });
+          document.querySelectorAll(".chapter").forEach(function (s) { spy.observe(s); });
+        }
+        tabs.forEach(function (t) {
+          t.addEventListener("click", function (ev) {
+            ev.preventDefault();
+            var target = document.querySelector(t.getAttribute("href"));
+            if (target) {
+              var smooth = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+              target.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
+            }
+          });
+        });
+      })();
+    </script>
+
+  </div>
+  <style>
+    .btn-paper.page-copy,
+    .btn-dark.btn-copy-ch,
+    #copyAll {
+      display: none !important;
+    }
+  </style>
+  <script>
+    if (localStorage.getItem("cwd_unlocked") !== "1") {
+      alert("Please purchase the book to read this chapter.");
+      window.location.href = "index.html#get";
+    }
+  </script>
+</body>
+
+</html>
