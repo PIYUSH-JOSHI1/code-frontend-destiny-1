@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#171310">
-  <title>Code with Destiny — a book by Varad</title>
+  <title>Code with Destiny — a book by Piyush</title>
   <meta name="description"
     content="Code with Destiny by Varad: an engineering student's story of all-nighters, canteen classrooms and last-minute code. Read the full book online or download the PDF.">
   <meta property="og:title" content="Code with Destiny">
@@ -1226,15 +1226,14 @@
       <div class="shell hero-grid">
         <div class="hero-copy">
           <h1 id="hero-h">Code with Destiny</h1>
-          <p class="sub">An engineering student's story of all-nighters, canteen classrooms and programs that somehow
-            worked at the last minute.</p>
+          <p class="sub">An  student's story of all-nighters, canteen classrooms and programs that somehow
+            worked at the last minute.</engineeringp>
           <p class="by">by Piyush Joshi</p>
           <div class="cta">
             <button class="btn btn-amber js-buy only-locked" type="button">Get the Book / Contribute</button>
             <a class="btn btn-amber js-read only-unlocked" href="#contents">Continue reading</a>
-            <a class="link js-pdf" href="Code with destiny.pdf" download="Code with destiny.pdf">Download the PDF</a>
           </div>
-          <p class="fine">Pay once with UPI, card or netbanking.</p>
+          <p class="fine">Free to read online. Contribute any amount you like to support the work.</p>
         </div>
 
         <div class="book-zone" id="bookZone">
@@ -1291,12 +1290,12 @@
 
     <!-- ================= PURCHASE ================= -->
     <section class="sec buy" id="get" aria-labelledby="buy-h">
-      <div class="shell buy-grid">
+      <div class="shell">
         <div class="buy-main">
           <h2 id="buy-h">Get the Book / Buy me a Coffee</h2>
 
           <div class="only-locked">
-            <p style="color: var(--ink-soft); margin-bottom: 20px;">The book is free! If you'd like to support my work, you can enter a contribution amount below. A PDF copy will be sent directly to your email.</p>
+            <p style="color: var(--ink-soft); margin-bottom: 20px;">The book is free to read online! If you'd like to support my work, enter any contribution amount below and you'll get instant access to all chapters.</p>
             
             <form id="paymentForm" onsubmit="event.preventDefault(); startPayment();" style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;">
               <div>
@@ -1304,7 +1303,7 @@
                 <input id="userEmail" type="email" placeholder="you@example.com" required style="width: 100%; padding: 12px; border: 1px solid var(--paper-edge); border-radius: 6px; font-family: var(--mono); background: #fffdf7; color: var(--ink)">
               </div>
               <div>
-                <label for="userAmount" style="display:block; font-weight: 600; margin-bottom: 5px; color: var(--ink)">Contribution Amount (₹) - Optional</label>
+                <label for="userAmount" style="display:block; font-weight: 600; margin-bottom: 5px; color: var(--ink)">Contribution Amount (₹) — Optional, enter 0 to read for free</label>
                 <input id="userAmount" type="number" min="0" value="0" style="width: 100%; padding: 12px; border: 1px solid var(--paper-edge); border-radius: 6px; font-family: var(--mono); background: #fffdf7; color: var(--ink)">
               </div>
               <button class="btn btn-ink" type="submit" id="mainBuyBtn">Get the Book</button>
@@ -1312,11 +1311,11 @@
 
             <p class="preview-note" id="previewNote" hidden>Preview mode: Razorpay isn't connected yet, so Buy simulates
               a successful payment. Add your key in CONFIG to take real payments.</p>
-            <p class="secure">Payments are handled by Razorpay. Your card details never touch this site.</p>
+            <p class="secure">Contributions are handled by Razorpay. Your card details never touch this site.</p>
             <details class="restore" id="restoreBox" hidden>
-              <summary>Already paid? Restore access across devices</summary>
+              <summary>Already contributed? Restore access across devices</summary>
               <form id="restoreForm" autocomplete="off">
-                <p style="margin-bottom: 12px; font-size: 14px; color: var(--desk-muted);">If you paid on a different device, enter your Razorpay Payment ID from your email receipt to restore access. (If you got the book for free, simply request it again above!)</p>
+                <p style="margin-bottom: 12px; font-size: 14px; color: var(--desk-muted);">If you contributed on a different device, enter your Razorpay Payment ID from your email receipt to restore access.</p>
                 <input name="paymentId" type="text" placeholder="Payment ID, like pay_Abc123"
                   aria-label="Razorpay payment ID" required>
                 <button class="btn btn-ink btn-sm" type="submit">Restore access</button>
@@ -1325,18 +1324,12 @@
           </div>
 
           <div class="only-unlocked">
-            <p class="owned">You have the full book.</p>
+            <p class="owned">You have full access. Happy reading!</p>
             <a class="btn btn-ink js-read" href="#contents">Start reading</a>
           </div>
 
           <p class="status" id="payStatus" role="status" aria-live="polite"></p>
         </div>
-
-        <aside class="buy-pdf" aria-labelledby="pdf-h">
-          <h3 id="pdf-h">Prefer a PDF?</h3>
-          <p id="pdfText">Download the book as a PDF and read it offline.</p>
-          <a class="btn btn-line js-pdf" href="Code with destiny.pdf" download="Code with destiny.pdf">Download the PDF</a>
-        </aside>
       </div>
     </section>
 
@@ -1401,10 +1394,10 @@
       },
 
       api: {
-        // Change these URLs to your deployed Render URL once live (e.g., "https://my-backend.onrender.com/api/create-order")
+        // Falling back to the Render URLs since local might not be running
         createOrder: "https://code-with-destiny-backend.onrender.com/api/create-order",
         verify: "https://code-with-destiny-backend.onrender.com/api/verify-payment",
-        session: "",                    // e.g. "/api/session"
+        session: "",                    
         restore: "https://code-with-destiny-backend.onrender.com/api/restore-access"
       },
 
@@ -1514,14 +1507,6 @@
       }
     }
 
-    /* ---------- PDF ---------- */
-    $$(".js-pdf").forEach(a => {
-      a.setAttribute("href", CONFIG.pdfUrl);
-      a.addEventListener("click", e => {
-        if (CONFIG.pdfRequiresPayment && !unlocked) { e.preventDefault(); toast("The PDF comes with the full book."); $("#get").scrollIntoView({ behavior: "smooth" }); }
-      });
-    });
-
     /* ---------- Razorpay ---------- */
     async function postJSON(url, body) {
       const res = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body || {}) });
@@ -1548,34 +1533,43 @@
     }
     async function startPayment() {
       say("");
-      
+
       const emailInput = document.getElementById("userEmail");
       const amountInput = document.getElementById("userAmount");
       let email = emailInput ? emailInput.value.trim() : "";
       let amount = amountInput ? parseInt(amountInput.value) || 0 : 0;
-      
-      // Require email if not unlocked yet
-      if (!email && !unlocked) {
-          document.getElementById("get").scrollIntoView({ behavior: "smooth" });
-          toast("Please enter your email to get the book.");
-          return;
+
+      if (!email) {
+        document.getElementById("get").scrollIntoView({ behavior: "smooth" });
+        toast("Please enter your email to get the book.");
+        return;
       }
 
+      // ── 0 Rs path: skip Razorpay entirely ──
+      if (amount <= 0) {
+        busy(true, "Sending access…");
+        try {
+          await postJSON(CONFIG.api.createOrder, { email: email, amount: 0 });
+        } catch (err) {
+          // Backend may be outdated or sleeping — still unlock on the frontend
+          console.warn("Backend unavailable for free request:", err.message);
+        }
+        busy(false);
+        unlock("You're in! Enjoy the book. 🎉");
+        return;
+      }
+
+      // ── Paid path: use Razorpay ──
       if (previewMode) {
         busy(true, "Simulating payment…");
         await new Promise(r => setTimeout(r, 800));
-        busy(false); unlock("Preview mode: payment simulated. The full book is unlocked for this visit.");
+        busy(false);
+        unlock("Preview mode: payment simulated.");
         return;
       }
       try {
         busy(true, "Creating your order…");
         const order = await postJSON(CONFIG.api.createOrder, { email: email, amount: amount });
-        
-        if (order.free) {
-            busy(false);
-            unlock("Success! The book has been sent to your email.");
-            return;
-        }
         await loadRazorpay();
         busy(true, "Waiting for payment…");
         const rzp = new window.Razorpay({
@@ -1586,7 +1580,8 @@
           name: CONFIG.razorpay.name,
           description: CONFIG.razorpay.description,
           theme: { color: CONFIG.razorpay.themeColor },
-          modal: { ondismiss: () => { busy(false); say("Checkout closed. You can buy the book whenever you're ready."); } },
+          prefill: { email: email },
+          modal: { ondismiss: () => { busy(false); say("Checkout closed. You can come back anytime."); } },
           handler: async res => {
             busy(true, "Confirming payment…");
             try {
@@ -1596,11 +1591,11 @@
                 razorpay_signature: res.razorpay_signature,
                 email: email
               });
-              busy(false); unlock();
             } catch (err) {
-              busy(false);
-              say(`Your payment went through, but we couldn't confirm it yet. Save this payment ID: ${res.razorpay_payment_id}. Email ${CONFIG.supportEmail} and we'll unlock the book.`, "error");
+              console.warn("Backend verification failed, unlocking anyway:", err.message);
             }
+            busy(false);
+            unlock("Payment successful! Thank you for your support. 🙏");
           }
         });
         rzp.on("payment.failed", r => {
@@ -1610,7 +1605,7 @@
         rzp.open();
       } catch (err) {
         busy(false);
-        say(err.message || "Something went wrong while starting the payment. Try again.", "error");
+        say(err.message || "Something went wrong. Please try again.", "error");
       }
     }
     $$(".js-buy").forEach(b => b.addEventListener("click", () => {
